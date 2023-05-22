@@ -11,10 +11,6 @@ class GameBoard extends StatefulWidget {
 }
 
 class _GameBoardState extends State<GameBoard> {
-  // grid dimensions
-  int rowLength = 10;
-  int colLength = 15;
-
   // current tetris piece
   Piece currentPiece = Piece(type: Tetromino.L);
 
