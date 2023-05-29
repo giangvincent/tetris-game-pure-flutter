@@ -1,3 +1,6 @@
+import 'dart:async';
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:tetris_game/piece.dart';
 import 'package:tetris_game/pixel.dart';
@@ -24,6 +27,19 @@ class _GameBoardState extends State<GameBoard> {
 
   void startGame() {
     currentPiece.initializePiece();
+
+    // frame refresh rate
+    Duration frameRate = const Duration(milliseconds: 800);
+    gameLoop(frameRate);
+  }
+
+  void gameLoop(Duration frameRate) {
+    Timer.periodic(frameRate, (timer) {
+      setState(() {
+        // move piece down
+        currentPiece.movePiece(Direction.down);
+      });
+    });
   }
 
   @override
